@@ -1,0 +1,249 @@
+<header class="main-header header-transparent sticky-header" style="background-color: white;">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand logo-custom" routerLink="">
+                <img src="assets/images/main-logo.png" alt="logo" class="main-logo">
+                <!-- <h4>Real Estate Agents</h4> -->
+            </a>
+            <button class="navbar-toggler" type="button" onclick="openNav()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <button class="navbar-toggler" type="button" onclick="openNav()" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/property/find" id="navbarDropdownMenuLink">
+                            <i class="fa fa-search"></i> Search Properties
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/agents/finder" id="navbarDropdownMenuLink">
+                            <i class="fa fa-search"></i> Find Agents
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item" *ngIf="role">
+                        <a class="nav-link" routerLink="/messages">
+                            <i class="fa fa-envelope"></i> Messages
+                        </a>
+                    </li> -->
+                    <li class="nav-item dropdown" *ngIf="!role">
+                        <a class="nav-link dropdown-toggle" data-toggle="modal" data-target="#modalLogin">
+                            <i class="fa fa-user-circle"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" *ngIf="!role">
+                        <a class="nav-link dropdown-toggle" data-toggle="modal" data-target="#modalSignup">
+                            <i class="	fa fa-user-plus"></i> Signup
+                        </a>
+                    </li>
+                    <li class="nav-item sp" *ngIf="role && user_role == 'agent' || user_role == 'broker'">
+                        <a routerLink="/property/posting" class="nav-link link-color" data-toggle="modal"
+                            data-target="#propertyModal"><i class="fa fa-plus"></i> Submit
+                            Property</a>
+                    </li>
+                    <li class="nav-item dropdown" *ngIf="role && user_role !== 'agent'">
+                        <a class="nav-link dropdown-toggle" (click)="logout()">
+                            <i class="fa fa-power-off"></i> Logout
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" *ngIf="role && user_role == 'agent'">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink">
+                            <i class="fa fa-user-o"></i> My Profile
+                        </a>
+
+                        <ul class="dropdown-menu custom-style-dropdown" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" routerLink="/dashboard/profile">
+                                <i class="fa fa-circle-o-notch"></i> Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" (click)="logout()">
+                                    <i class="fa fa-power-off"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- Mobile Sidemenu -->
+<div id="mySidenav" class="sidenav d-sm-block d-xs-block">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-times"></i></a>
+    <a class="mobile-menu-itmes" routerLink="/" onclick="closeNav()"><i class="fa fa-home fa-custom-color"></i> Home</a>
+    <a class="mobile-menu-itmes" routerLink="/property/find" onclick="closeNav()"><i class="fa fa-search fa-custom-color"></i> Search Properties</a>
+    <a class="mobile-menu-itmes" routerLink="/agents/finder" onclick="closeNav()"><i class="fa fa-search fa-custom-color"></i> Find Agents</a>
+    <a class="mobile-menu-itmes" *ngIf="!role" data-toggle="modal" data-target="#modalLogin" onclick="closeNav()"><i class="fa fa-user-circle fa-custom-color"></i> Login</a>
+    <a class="mobile-menu-itmes" *ngIf="!role" data-toggle="modal" data-target="#modalLogin" onclick="closeNav()"><i class="fa fa-user-plus fa-custom-color"></i> Signup</a>
+    <!-- <a class="mobile-menu-itmes" routerLink="/messages" onclick="closeNav()"><i class="fa fa-envelope fa-custom-color"></i>  Messages</a> -->
+    <a class="mobile-menu-itmes" *ngIf="role && user_role == 'agent' || user_role == 'broker'" routerLink="/property/posting" data-toggle="modal" data-target="#propertyModal" onclick="closeNav()"><i class="fa fa-plus fa-custom-color"></i> Submit Property</a>
+    <a class="mobile-menu-itmes" *ngIf="role" routerLink="/dashboard/profile" onclick="closeNav()"><i class="fa fa-circle-o-notch fa-custom-color"></i> My Dashboard</a>
+    <a (click)="logout()" *ngIf="role"><i class="fa fa-power-off fa-custom-color"></i> Logout</a>
+</div>
+
+
+<!-- Property Modal -->
+<div class="modal fade" id="propertyModal" tabindex="-1" role="dialog" aria-labelledby="propertyModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-color">
+                    <ul class="row">
+                        <li class="col-md-4" (click)="submitProperty('buy')">
+                            <!-- <input type="radio" id="f-option" name="selector" > -->
+                            <a routerLink="/property/posting">
+                                <div class="service-info">
+                                    <div class="icon text-center mb-2">
+                                        <i class="fa fa-home custom-home-icon fa-4x"></i>
+                                    </div>
+                                    <h4 class="text-block">Buy A Home</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-md-4" (click)="submitProperty('sell')">
+                            <a routerLink="/property/posting">
+                                <div class="service-info">
+                                    <div class="icon text-center mb-2">
+                                        <i class="flaticon-apartment-1 fa-4x"></i>
+                                    </div>
+                                    <h4 class="text-block">Sell A Home</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-md-4" (click)="submitProperty('rent')">
+                            <a routerLink="/property/posting">
+                                <div class="service-info">
+                                    <div class="icon text-center mb-2">
+                                        <i class="flaticon-rent fa-4x"></i>
+                                    </div>
+                                    <h4 class="text-block">Rent A Home</h4>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                <p class="text-modal-footer">Or Please Contact us for More Info at <a
+                        style="color:#1D4354;font-weight: bold" routerLink="/pages/contact" data-dismiss="modal">Contact
+                        Us</a><br>
+                    We respect your privacy. See our privacy policy.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
+    <div class="modal-dialog custom-modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-color">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-content-box">
+                            <div class="details">
+                                <a href="#">
+                                    <img src="assets/images/main-logo.png" class="logo-width" alt="Swiftlire Logo">
+                                </a>
+                                <h3>SignIn to your account</h3>
+                                <form (ngSubmit)="getLogin(loginForm)" #loginForm="ngForm">
+                                    <div class="form-group">
+                                        <input type="email" class="input-text" ngModel #email="ngModel" name="email" placeholder="Email Address" [ngClass]="{ 'is-invalid': loginForm.submitted && email.invalid}" email required>
+                                        <span class="invalid-field" *ngIf="loginForm.submitted && email.invalid">Email Address is Requied</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="input-text" ngModel #password="ngModel" name="password" placeholder="Password" [ngClass]="{ 'is-invalid': loginForm.submitted && password.invalid}" password required>
+                                        <span class="invalid-field" *ngIf="loginForm.submitted && password.invalid">Password is Requied</span>
+                                    </div>
+                                    <div class="checkbox">
+                                        <a (click)="forgotPassword()" class="link-not-important pull-right">Forgot Password</a>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <button type="submit" class="btn-md btn-shadow button-theme btn-block">login</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="footer">
+                                <span>Don't have an account? 
+                                    <a (click)="modalRegister()">Register here</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal fade" id="modalSignup" tabindex="-1" role="dialog" aria-labelledby="modalSignup" aria-hidden="true">
+    <div class="modal-dialog custom-modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal-color">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-content-box">
+                            <div class="details">
+                                <a href="#">
+                                    <img src="assets/images/main-logo.png" class="logo-width" alt="Swiftlire Logo">
+                                </a>
+                                <h3>Setup Your New Account Here!</h3>
+                                <form (ngSubmit)="getRegistered(registerForm)" #registerForm="ngForm">
+                                    <div class="form-group">
+                                        <input type="email" class="input-text" ngModel #emailId="ngModel" name="emailId" placeholder="Enter Email Address" [ngClass]="{ 'is-invalid': registerForm.submitted && emailId.invalid}" required>
+                                        <span class="invalid-field" *ngIf="registerForm.submitted && emailId.invalid">Email Address is Requied</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="input-text" ngModel #UserPassword="ngModel" name="UserPassword" placeholder="Enter Password" [ngClass]="{ 'is-invalid': registerForm.submitted && UserPassword.invalid}" required>
+                                        <span class="invalid-field" *ngIf="registerForm.submitted && UserPassword.invalid">Password is Requied</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox checkbox-theme custom-header-checkbox pull-left">
+                                            <input id="checkbox30" type="checkbox" ngModel #userType="ngModel" name="userType">
+                                            <label for="checkbox30" class="pl-2">
+                                                I'm Real Estate Agent or Brokerage
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <button class="btn-md btn-shadow button-theme btn-block">Create Account</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="footer">
+                                <span>Have an account? 
+                                    <a (click)="modalLogin()">Login here</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

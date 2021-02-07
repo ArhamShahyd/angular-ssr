@@ -1,0 +1,157 @@
+<!-- Sub banner start -->
+<!-- <div class="sub-banner overview-bgi">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Agents Finder</h1>
+            <ul class="breadcrumbs">
+                <li><a href="">Home</a></li>
+                <li class="active">Agents Finder</li>
+            </ul>
+        </div>
+    </div>
+</div> -->
+<!-- Sub Banner end -->
+
+<div class="comparison content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form class="form-search" (ngSubmit)="findAgents(f.value)" #f="ngForm">
+                    <div class="row sidebar search-box">
+                        <div class="col-md-12 col-lg-12">
+                            <h5 class="sidebar-title">Find an Agent</h5>
+                            <div class="s-border"></div>
+                        </div>
+                        <div class="col-lg-5 col-md-4 col-lg-3">
+                            <div class="form-group form-search">
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control agent-search-form" ngModel #LocationName="ngModel" placeholder="Neighborhood/City/Zip" name="LocationName">
+                                </div>
+                                <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-4 col-lg-3">
+                            <div class="form-group form-search">
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control agent-search-form" ngModel #agentName="ngModel" placeholder="Agent Name" name="agentName">
+                                </div>
+                                <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-lg-2">
+                            <div class="form-group">
+                                <button class="search-button btn-md btn-color">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><br>
+    <div class="container" *ngIf="InitialSearch == true">
+        <div class="row" *ngFor="let agent of allAgents | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
+            <div class="col-md-12">
+                <div class="row view-agents-block">
+                    <div class="col-md-2">
+                        <img src="assets/images/img-profile.png" alt="" class="image-profile pull-right">
+                    </div>
+                    <div class="col-md-3">
+                        <h5 class="text-profile-title" [routerLink]="['/agents/details/', agent.id]">{{agent.firstName.substr(0,8)}} {{agent.lastName.substr(0,8)}}</h5>
+                        <span>{{agent.phoneNumber}}</span>
+                        <star-rating [value]="agent.userRating" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="20px" readonly="true"></star-rating>
+                    </div>
+                    <div class="col-md-5">
+                        <p class="text-reviews" *ngIf="agent.userReview">
+                            {{agent.userReview?.slice(0,160)}} <span *ngIf="agent.userReview?.length > 160">...</span>
+                        </p>
+                        <p class="text-review-available" *ngIf="!agent.userReview">
+                            No Reviews Available.
+                        </p>
+                    </div>
+                    <div class="col-md-2 icon-right-profile">
+                        <a [routerLink]="['/agents/details/', agent.id]" target="_blank">
+                            <i class="fa fa-angle-right fa-5x pull-right"></i>
+                        </a>
+                    </div>
+                </div><hr>
+                <!-- <div class="row">
+                    <div class="col-md-2">
+                        <img src="assets/images/img-profile.png" alt="" class="image-profile pull-right">
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Arham Shahyd</h4>
+                        <p>(510) 925-7608</p>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="col-md-5">
+                        <p>
+                            This agent is so amazing and cooperating this agent is so amazing and cooperating this agent is so amazing and cooperating.
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <i routerLink="/agents/details" class="fa fa-angle-right fa-5x pull-right"></i>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <p *ngIf="allAgents == ''" class="agent-not-found">Agent Not Found!</p>
+        <pagination-controls *ngIf="allAgents?.length > 1 || allAgents?.length == 1" style="float:right" (pageChange)="p = $event"></pagination-controls><br><br>
+    </div>
+    <p *ngIf="respond == false">No Record Found!</p>
+    <!-- Before Search Text -->
+    <div class="container" *ngIf="InitialSearch == false">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5>Find agents in your area.</h5>
+                <p>To get started, enter your location or search for a specific agent by name.</p>
+                <img src="assets/images/find-agents.jpg" width="500px" class="img-agent-search">
+            </div>
+        </div><br><br>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-finder-des">
+                    Whether you are looking to rent, buy or sell your home, Swiftli's directory of local real estate
+                    agents and brokers connects you with professionals who can help meet your needs. Because the real
+                    estate market is unique, it's important to choose a real estate agent or broker with local expertise
+                    to guide you through the process of renting, buying or selling your next home. Our directory helps
+                    you find real estate professionals who specialize in buying, selling, foreclosures, or relocation -
+                    among many other options. Alternatively, you could work with a local agent or real estate broker who
+                    provides an entire suite of buying and selling services. <br>
+                    No matter what type of real estate needs you have, finding the local real estate professional you
+                    want to work with is the first step. The real estate directory lets you view and compare real estate
+                    agents, read reviews, see an agent's current listings and past sales, and contact agents directly
+                    from their profile pages on Swiftli.<br>
+                    Swiftli is the leading real estate and rental marketplace dedicated to empowering consumers with
+                    data, inspiration and knowledge around the place they call home, and connecting them with the best
+                    local professionals who can help.<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="allAgents == ''">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-finder-des">
+                    Whether you are looking to rent, buy or sell your home, Swiftli's directory of local real estate
+                    agents and brokers connects you with professionals who can help meet your needs. Because the real
+                    estate market is unique, it's important to choose a real estate agent or broker with local expertise
+                    to guide you through the process of renting, buying or selling your next home. Our directory helps
+                    you find real estate professionals who specialize in buying, selling, foreclosures, or relocation -
+                    among many other options. Alternatively, you could work with a local agent or real estate broker who
+                    provides an entire suite of buying and selling services. <br>
+                    No matter what type of real estate needs you have, finding the local real estate professional you
+                    want to work with is the first step. The real estate directory lets you view and compare real estate
+                    agents, read reviews, see an agent's current listings and past sales, and contact agents directly
+                    from their profile pages on Swiftli.<br>
+                    Swiftli is the leading real estate and rental marketplace dedicated to empowering consumers with
+                    data, inspiration and knowledge around the place they call home, and connecting them with the best
+                    local professionals who can help.<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

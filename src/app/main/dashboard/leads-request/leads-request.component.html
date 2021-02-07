@@ -1,0 +1,46 @@
+<div class="content-area5 dashboard-content">
+    <div class="submit-address dashboard-list">
+        <h4 class="bg-grea-3">Leads Request</h4>
+        <div class="dashboard-message contact-2">
+            <table class="table table-striped" *ngIf="requestLeads?.length > 1 || requestLeads?.length == 1">
+                <thead>
+                    <tr>
+                    <th scope="col">Contact User</th>
+                    <th scope="col">Starting</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lead of requestLeads | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
+                        <td>
+                            {{lead.contactUserId.name.slice(0,20)}}
+                            <span *ngIf="lead.contactUserId.name?.length > 20">...</span>
+                        </td>
+                        <td>
+                            {{lead.created_at | date}}
+                        </td>
+                        <td>
+                            {{lead.expireTime | date}}
+                        </td>
+                        <td>
+                            {{lead.contactUserId.description.slice(0,30)}}
+                            <span *ngIf="lead.contactUserId.description?.length > 30">...</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-shadow btn-danger btn-sm" (click)="LeadStatusForm(lead._id, 0)">
+                                <i class="fa fa-close"></i>
+                            </button>
+                            <button class="btn btn-shadow button-theme btn-sm ml-2" (click)="LeadStatusForm(lead._id, 1)">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p *ngIf="requestLeads?.length == 0">No Leads request Found!</p>
+            <pagination-controls *ngIf="requestLeads?.length > 1 || requestLeads?.length == 1" style="float:right" (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

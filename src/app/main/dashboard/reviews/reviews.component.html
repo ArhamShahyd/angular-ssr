@@ -1,0 +1,25 @@
+<div class="content-area5 dashboard-content">
+    <div class="submit-address dashboard-list">
+        <h4 class="bg-grea-3">Reviews</h4>
+        <div class="dashboard-message contact-2">
+            <div class="row border-bottom-review" *ngFor="let review of profileReview | paginate: { itemsPerPage: 10, currentPage: p }">
+                <div class="col-md-4">
+                    <span *ngIf="review.serviceProvidedFor == 'findRentalHome'">Helped me find a home to rent</span>
+                    <span *ngIf="review.serviceProvidedFor == 'neverRespond'">Never responded to my inquiry</span>
+                    <span *ngIf="review.serviceProvidedFor == 'connectedButNotWork'">None. We connected, but it did not work out</span>
+                    <span *ngIf="review.serviceProvidedFor == 'manageMyHome'">Property manage a home I own</span>
+                    <span *ngIf="review.serviceProvidedFor == 'helpToFindTenantForMyHome'">Helped me find a tenant for a home I own</span>
+                    <span *ngIf="review.serviceProvidedFor == 'otherServices'">Other real estate service</span>
+                </div>
+                <div class="col-md-2">
+                    <star-rating [value]="review.totalReviewStar" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="20px" readonly="true"></star-rating>
+                </div>
+                <div class="col-md-6">
+                    <span>{{review.messageReview.substr(0,200)}}..</span>
+                </div>
+            </div>
+            <p *ngIf="profileReview?.length == 0">No Review Found!</p>
+            <pagination-controls *ngIf="profileReview?.length > 1 || profileReview?.length == 1" style="float:right" (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+.container-fluid{
+    padding-right: 50px!important;
+    padding-left: 50px!important;
+}
+.nav-link.active{
+    background-color: #37A000 !important;
+}
+.nav-link:hover{
+    background-color: #37A000 !important;
+    color: white;
+}
+.nav-pills .nav-link{
+    border-radius: 0px;
+    background: #f9f9f8;
+    border-bottom: 1px solid #dad0d0;
+}
+
+/* Media Query CSS */
+@media only screen and (max-width: 450px) {
+    .submit-property {
+        top: 0px !important;
+    }
+    .block-side-padding{
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+}

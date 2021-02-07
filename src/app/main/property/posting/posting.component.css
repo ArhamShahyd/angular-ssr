@@ -1,0 +1,29 @@
+.note-down{
+    font-weight: 300;
+    color: #6b5f5f;
+    font-size: 12px;
+}
+.invalid-field{
+    font-size: 13px;
+    color: #dc3545;
+    margin-left: 5px;
+}
+.is-invalid{
+    border: 1px solid #dc3545 !important;
+}
+.selected-video-dropzone{
+    height: 100% !important;
+    max-width: 100% !important;
+    min-height: 100% !important;
+    min-width: 100% !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+/* Media Query CSS */
+@media only screen and (max-width: 450px) {
+    .submit-property {
+        top: 0px !important;
+        padding-top: 0px !important;
+    }
+}

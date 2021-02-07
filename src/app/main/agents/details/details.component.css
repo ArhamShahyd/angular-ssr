@@ -1,0 +1,44 @@
+.text-info{
+    font-size: 14px;
+    color: #4d4d4d!important;
+}
+div .fa-star:before{
+    font-size: 20px!important;
+}
+div .fa-star-o:before{
+    font-size: 20px!important;
+}
+.review-date{
+    color: grey;
+}
+.border-top-review{
+    border-top: 1px solid #a7a6ab70;
+    padding-top: 20px;
+}
+.text-font{
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+.non-display{
+    display: none;
+}
+
+/* Errors */
+.invalid-field{
+    font-size: 11px;
+    color: #dc3545;
+}
+.is-invalid{
+    border: 1px solid #dc3545;
+}
+.btn-custom{
+    background: white;
+    border: 1px solid #37A000;
+    color: #37A000 !important;
+    margin-right: 6px;
+}
+.social-list a{
+    color: white !important;
+}
+.content-area{
+    padding: 50px 0 70px !important;
+}

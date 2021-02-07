@@ -1,0 +1,5 @@
+.service-info:hover{
+    cursor: pointer;
+    transform: scale(1.02) translate(0px, -8px);
+    transition: all 300ms ease-in-out 0s;
+}

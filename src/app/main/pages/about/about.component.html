@@ -1,0 +1,105 @@
+    <!-- Sub banner start -->
+    <div class="sub-banner overview-bgi">
+        <div class="container">
+            <div class="breadcrumb-area">
+                <h1>About Us</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="">Home</a></li>
+                    <li class="active">About Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Banner end -->
+
+    <div class="about-real-estate content-area-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                    <div class="about-text">
+                        <h5 class="sidebar-title">Swiftli is your partner in Social Media growth for Real Estate.</h5>
+                        <div class="s-border"></div>
+                        <p>
+                            Swiftli RE is the
+                            first real estate search site that rewards agents for providing their listings with free leads and
+                            opportunities to close more deals using our integrated solutions. <br>
+                            We do this by encouraging real estate agents, home buyers and sellers, to share any interesting home that they may find here with their contacts on other social media sites.
+                        </p>
+                        <a href=""
+                            class="btn btn-md button-theme">Read More</a>
+                    </div>
+                </div>
+                <div class="col-xl-5 offset-md-1 col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                    <div class="about-slider-box simple-slider">
+                        <img src="assets/images/about-right-image.jpeg" alt="about-us" width="100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="counters overview-bgi">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h4 class="text-banner">Work with a Real Person</h4>
+                    <p class="text-banner-p">Speak with a member of our sales team about availability in your area.</p>
+                    <a routerLink="/pages/contact" class="btn btn-sm btn-shadow button-theme btn-contact">Contact Us</a><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 align-self-center">
+                <div class="contact-2 pb-hediin-60">
+                    <h5 class="sidebar-title">Always Supporting You!</h5>
+                    <div class="s-border"></div>
+                    <!-- <h3 class="heading">How can we help?</h3> -->
+                    <form (ngSubmit)="aboutForm(contactForm)" #contactForm="ngForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group name">
+                                    <input type="text" class="form-control" ngModel #name="ngModel" name="name" placeholder="Name" [ngClass]="{ 'is-invalid': contactForm.submitted && name.invalid}" required>
+                                    <span class="invalid-field" *ngIf="contactForm.submitted && name.invalid">Name is Required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group email">
+                                    <input type="email" class="form-control" ngModel #email="ngModel" name="email" placeholder="Email" [ngClass]="{ 'is-invalid': contactForm.submitted && email.invalid}" required>
+                                    <span class="invalid-field" *ngIf="contactForm.submitted && email.invalid">Email Address is Required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group subject">
+                                    <input type="text" class="form-control" ngModel #subject="ngModel" name="subject" placeholder="Subject" [ngClass]="{ 'is-invalid': contactForm.submitted && subject.invalid}" required>
+                                    <span class="invalid-field" *ngIf="contactForm.submitted && subject.invalid">Subject is Required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group number">
+                                    <input type="number" class="form-control" ngModel #phone="ngModel" name="phone" placeholder="Number" [ngClass]="{ 'is-invalid': contactForm.submitted && phone.invalid}" required>
+                                    <span class="invalid-field" *ngIf="contactForm.submitted && phone.invalid">Contact Number is Required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group message">
+                                    <textarea class="form-control" ngModel #message="ngModel" name="message" placeholder="Write message about your concern" [ngClass]="{ 'is-invalid': contactForm.submitted && message.invalid}" required></textarea>
+                                    <span class="invalid-field" *ngIf="contactForm.submitted && message.invalid">Message is Required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="send-btn text-center">
+                                    <button type="submit" class="btn btn-md btn-shadow button-theme pull-right">Let's Connected</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form><br>
+                </div>
+            </div>
+            <div class="offset-xl-1 col-xl-5 col-lg-6">
+                <img src="assets/images/about-helpconnect.png" alt="avatar-10" class="img-fluid">
+            </div>
+        </div>
+    </div>

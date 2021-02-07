@@ -1,0 +1,13 @@
+.is-invalid{
+    border: 1px solid #e81f1f;
+}
+.invalid-feedback{
+    font-size: 12px;
+    color: #e81f1f;
+}
+.input-number{
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+:disabled{
+    cursor: not-allowed;
+}

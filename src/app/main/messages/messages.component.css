@@ -1,0 +1,122 @@
+.img-sidebar{
+    width: 100%;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+.img-message{
+    width: 80%;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+.header-sidebar{
+    padding: 15px 10px 11px 10px;
+    background-color: white;
+}
+.container-fluid{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.focusout-background{
+    background-color: #f7f7f7;
+}
+.contact-list{
+    padding: 5px 10px 8px 10px;
+    background: #e5f8e6;
+    border: 1px solid #ececec;
+}
+.contact-list-white{
+    padding: 5px 10px 8px 10px;
+    background: white;
+    border: 1px solid #ececec;
+}
+.candidate-name{
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: -6px;
+    margin-top: 3px;
+    margin-bottom: 0px;
+}
+.candidate-receive-name{
+    font-size: 14px;
+    font-weight: bold;
+    /* margin-left: -17px; */
+    margin-top: 3px;
+    margin-bottom: 0px;
+}
+.message-view-sidebar{
+    font-size: 12px;
+    color: #929292;
+    margin-left: -6px;
+}
+.text-hour{
+    font-size: 10px;
+    color: #999;
+    margin-left: 3px;
+    font-weight: bold;
+    font: 10px/24px "ProximaNova","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.message-btn{
+    background: white;
+    border: 1px solid #faaa5d;
+    color: #faaa5d;
+    border-radius: 0px;
+    float: right;
+    margin-top: 10px;
+    font-size: 13px;
+}
+.message-btn:hover{
+    background: #faaa5d;
+    color: white;
+}
+.message-view-text{
+    font-size: 13px;
+    color: #615d5d;
+}
+.sidebar-wid{
+    height: 540px;
+    background-color: white;
+    border: 1px solid #ececec;
+    overflow-y: auto;
+}
+.message-row{
+    padding: 10px;
+    background: white;
+    position: relative;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    border: 1px solid #ececec;
+}
+.message-send-custom{
+    border: none;
+    margin-top: 5px;
+    font: 15px/24px "ProximaNova","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.message-display-body{
+    height: 487px;
+    overflow-y: auto;
+    background: white;
+    padding: 10px;
+    border: 1px solid #ececec;
+}
+.text-profile-name{
+    background: white;
+    border: 1px solid #ececec;
+    padding: 10px 4px 7px 11px;
+}
+.text-top-profileName{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+.search-messages{
+    background: #ececec;
+    border-radius: 0px;
+    border: none;
+    font: 15px/24px "ProximaNova","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.font-icon-custom{
+    font-size: 20px;
+    margin-top: 16px;
+    padding-left: 50px;
+}

@@ -1,0 +1,37 @@
+<div class="content-area5 dashboard-content">
+    <div class="submit-address dashboard-list">
+        <h4 class="bg-grea-3">Expired Leads</h4>
+        <div class="dashboard-message contact-2">
+            <table class="table table-striped" *ngIf="expireLeads?.length > 1 || expireLeads?.length == 1">
+                <thead>
+                    <tr>
+                    <th scope="col">Counts</th>
+                    <th scope="col">Contact User</th>
+                    <th scope="col">Starting</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lead of expireLeads | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
+                        <td scope="row">{{lead.counter}}</td>
+                        <td>
+                            {{lead.contactUserId.name}}
+                        </td>
+                        <td>
+                            <span class="text-font">{{lead.created_at | date}}</span>
+                        </td>
+                        <td>
+                            <span class="text-font">{{lead.expireTime | date}}</span>
+                        </td>
+                        <td>
+                            {{lead.contactUserId.description}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p *ngIf="expireLeads?.length == 0">No Expired Leads Found!</p>
+            <pagination-controls *ngIf="expireLeads?.length > 1 || expireLeads?.length == 1" style="float:right" (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

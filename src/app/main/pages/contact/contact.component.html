@@ -1,0 +1,112 @@
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Contact us</h1>
+            <ul class="breadcrumbs">
+                <li><a href="">Home</a></li>
+                <li class="active">Contact us</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+
+<div class="contact-2 content-area-5">
+    <div class="container">
+        <div class="main-title text-center">
+            <h1>Let's Connect Us</h1>
+        </div>
+        <div class="contact-info">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mrg-btn-50">
+                    <i class="flaticon-pin"></i>
+                    <p>Office Address</p>
+                    <strong>1608 – 68 Abell Street, Toronto, ON., M6J 3S8</strong>
+                </div>
+                <div class="col-md-3 col-sm-6 mrg-btn-50">
+                    <i class="flaticon-phone"></i>
+                    <p>Phone Number</p>
+                    <strong class="custom-font">416-316-9516</strong>
+                </div>
+                <div class="col-md-3 col-sm-6 mrg-btn-50">
+                    <i class="flaticon-mail"></i>
+                    <p>Email Address</p>
+                    <strong>hello@swiftlire.com</strong>
+                </div>
+                <div class="col-md-3 col-sm-6 mrg-btn-50">
+                    <i class="flaticon-earth"></i>
+                    <p>Associations</p>
+                    <strong>www.encodersltd.com</strong>
+                </div>
+            </div>
+        </div>
+        <form (ngSubmit)="contactForm(f)" #f="ngForm">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group name">
+                                <input type="text" class="form-control" ngModel #name="ngModel" name="name" placeholder="Name" [ngClass]="{ 'is-invalid': f.submitted && name.invalid}" required>
+                                <span class="invalid-field" *ngIf="f.submitted && name.invalid">Name is Required</span>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group email">
+                                <input type="email" class="form-control" ngModel #email="ngModel" name="email" placeholder="Email" [ngClass]="{ 'is-invalid': f.submitted && email.invalid}" required email>
+                                <span class="invalid-field" *ngIf="f.submitted && email.invalid">Email Address is Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group subject">
+                                <input type="text" class="form-control" ngModel #subject="ngModel" name="subject" placeholder="Subject" [ngClass]="{ 'is-invalid': f.submitted && subject.invalid}" required>
+                                <span class="invalid-field" *ngIf="f.submitted && subject.invalid">Subject is Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group number">
+                                <input type="number" class="form-control" ngModel #phone="ngModel" name="phone" placeholder="Number" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid}" required>
+                                <span class="invalid-field" *ngIf="f.submitted && phone.invalid">Phone Number is Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group message">
+                                <textarea class="form-control" ngModel #message="ngModel" name="message" placeholder="Write message" [ngClass]="{ 'is-invalid': f.submitted && message.invalid}" required></textarea>
+                                <span class="invalid-field" *ngIf="f.submitted && message.invalid">Message is Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="send-btn text-center">
+                                <button type="submit" class="btn btn-shadow btn-md button-theme pull-right">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="opening-hours bg-light">
+                        <h3 class="sidebar-title mb-0">Hours Open</h3>
+                        <p class="hours-text">All times are in Eastern Daylight Savings Time</p>
+                        <div class="s-border"></div>
+                        <ul class="list-style-none custom-hours">
+                            <li><strong>Sunday</strong> <span class="text-red"> Closed</span></li>
+                            <li><strong>Monday</strong> <span> 9 AM - 5 PM</span></li>
+                            <li><strong>Tuesday </strong> <span> 9 AM - 5 PM</span></li>
+                            <li><strong>Wednesday </strong> <span> 9 AM - 5 PM</span></li>
+                            <li><strong>Thursday </strong> <span> 9 AM - 5 PM</span></li>
+                            <li><strong>Friday </strong> <span> 9 AM - 5 PM</span></li>
+                            <li><strong>Saturday </strong> <span> Closed</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="section">
+    <!-- Google Maps Angular -->
+    <agm-map [latitude]='latitude' [longitude]='longitude' [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+    <!-- Google Maps Angular -->
+</div>

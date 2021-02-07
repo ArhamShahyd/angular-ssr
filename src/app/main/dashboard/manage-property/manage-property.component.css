@@ -1,0 +1,14 @@
+.dashboard-content{
+    padding: 20px 0px 0 !important;
+}
+.btn-custom-delete{
+    background: #c73030 !important;
+}
+
+/* Media Query CSS */
+@media only screen and (max-width: 450px) {
+    .dashboard-message{
+        padding: 0px;
+        margin-top: 15px;
+    }
+}

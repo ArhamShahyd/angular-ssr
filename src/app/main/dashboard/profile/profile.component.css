@@ -1,0 +1,74 @@
+.dashboard-content{
+    padding: 20px 0px 0 !important;
+}
+.readonly{
+    pointer-events: none;
+    background-color: #eeeeee;
+    border: 1px solid #dad0d0;
+}
+.readonly-number{
+    pointer-events: none;
+    background-color: #eeeeee;
+    border: 1px solid #dad0d0;
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+.input-number{
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+.headline-brokerage{
+    font-size: 21px;
+    position: relative;
+    font-weight: 600;
+    padding: 0px 15px !important;
+    border: none !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Ratings */
+
+.counter {
+    background-color:#f5f5f5;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.count-title {
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.count-text {
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.custom-font-icon {
+    margin: 0 auto;
+    float: none;
+    display: table;
+    color: #37a000;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+/* Media Query CSS */
+@media only screen and (max-width: 450px) {
+    .submit-property {
+        top: 0px !important;
+    }
+    .col-blocks{
+        padding-bottom: 10px;
+    }
+    .link-blocks{
+        display: block;
+        width: 100%;
+        margin: 0px;
+    }
+}

@@ -1,0 +1,84 @@
+.content-area{
+    padding: 80px 0 0px!important;
+}
+.text-font{
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+.facilities-list li{
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+.title-property{
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.search-views-text{
+    font-size: 14px;
+    line-height: 25px;
+}
+.search-box-view{
+    background: #f8f9fa!important;
+    border: 1px solid #e3e6e8;
+    padding-top: 10px;
+}
+.btn-custom-radio{
+    background-color: white;
+    color: #1D4354;
+    border-color: #37A000;
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    width: 49px;
+}
+.btn-custom-radio.active{
+    background-color: #37A000;
+    color: white;
+    border-color: #37A000;
+    width: 49px;
+}
+.radio-hidden{
+    display: none;
+}
+.date-posted-bar{
+    position: absolute;
+    right: 12px;
+    top: -17px;
+    background: rgba(0,0,0,.54);
+    color: #FFF;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+.property-type{
+    color: white !important;
+    background: #37a000;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 12px;
+    padding: 2px 5px 2px 5px;
+}
+.map-marker-inside{
+    text-decoration: underline !important;
+    color: #659900 !important;
+}
+/* Google Maps CSS */
+agm-map{
+    height: 100%;
+}
+
+/* Media Query CSS */
+@media only screen and (max-width: 450px) {
+    .map-content{
+        padding: 0px !important;
+    }
+    .mobile-map{
+        display: none;
+    }
+    .map-content-sidebar{
+        width: 100%;
+        max-width: 100% !important;
+    }
+    .property-thumbnail{
+        height: 100% !important;
+    }
+}

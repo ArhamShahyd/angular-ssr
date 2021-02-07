@@ -1,0 +1,437 @@
+<!-- Sub banner start -->
+<div class="sub-banner overview-bgi">
+    <div class="container">
+        <div class="breadcrumb-area">
+            <h1>Agent Details</h1>
+            <ul class="breadcrumbs">
+                <li><a href="">Home</a></li>
+                <li class="active">Agent Details</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+
+<!-- Agent page start -->
+<div class="agent-page content-area">
+    <div class="container">
+        <!-- Heading -->
+        <a routerLink="/agents/finder">
+            <i class="fa fa-chevron-left"></i> <span> &nbsp;Back to Search Agents</span>
+        </a>
+        <!-- <h1 class="heading-2">Agent Profile Details</h1> -->
+        <div class="row mt-4">
+            <div class="col-lg-8">
+                <div class="row team-2">
+                    <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-pad ">
+                        <div class="photo">
+                            <img src="assets/images/img-profile.png" alt="agent_profile" width="290px" height="290px" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-pad align-self-center bg">
+                        <div class="detail">
+                            <h4>
+                                <a>{{userDetail?.firstName}} {{userDetail?.lastName}}</a>
+                            </h4>
+                            <h5 class="mb-0">{{userDetail?.professionalTitle}}</h5>
+                            <star-rating [value]="userdetailRating.userRating" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="true"></star-rating>
+                            <div class="contact mt-2">
+                                <ul>
+                                    <!-- <li>
+                                        <i class="flaticon-pin"></i><a>{{userDetail?.address}}</a>
+                                    </li> -->
+                                    <li *ngIf="userDetail.email">
+                                        <i class="flaticon-mail"></i><a
+                                            href="mailto:arham.shahyd@gmail.com">{{userDetail.email}}</a>
+                                    </li>
+                                    <li *ngIf="userDetail.primaryPhone">
+                                        <i class="flaticon-phone"></i><a class="text-font"> {{userDetail.primaryPhone}}</a>
+                                    </li>
+                                    <li *ngIf="userDetail.phoneNumber">
+                                        <i class="flaticon-phone"></i><a class="text-font"> {{userDetail.phoneNumber}}</a>
+                                    </li>
+                                    <li *ngIf="userDetail.cityStateZip">
+                                        <i class="fa fa-map-marker"></i><a class="text-font"> {{userDetail.cityStateZip}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <ul class="social-list clearfix">
+                                <li>
+                                    <a (click)="openSocialMedia(userDetail.facebook)" class="facebook-bg"><i class="fa fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a (click)="openSocialMedia(userDetail.twitter)" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a (click)="openSocialMedia(userDetail.instagram)" class="google-bg"><i class="fa fa-instagram"></i></a>
+                                </li>
+                                <li>
+                                    <a (click)="openSocialMedia(userDetail.linkedIn)" class="linkedin-bg"><i class="fa fa-linkedin"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-biography">
+                    <h3 class="heading-2">About Agent</h3>
+                    <p *ngIf="userDetail.message">
+                        {{userDetail.message}}
+                    </p>
+                    <p *ngIf="!userDetail.message">
+                        Agent with the assurance of an insightful partner in achieving your real estate goals. Buying or selling a home or property can be a challenging task. It's my job to simplify the process for you. I specialize in asking questions and getting you answers, understanding your goals and needs, learning what unique features you are searching for in a property you wish to purchase, or uncover the unique features of the home or property you wish to sell. My goal is to help you sell your home or property for the best possible price and terms, minimizing problems along the way, and complete the process in the shortest amount of time. Most importantly, I am are here to serve and be a resource to you. I will do everything I can to represent you and your best interest which means going above the normal expectations of a REALTOR® to help you buy or sell.
+                    </p>
+                    <br>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 100%;width: 100%">
+                        <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                            style="border:0;height: 400px;width: 100%" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div> -->
+                <br><br>
+                <!-- <h4>Active Listings</h4><br>
+                <table style="width: 100%" class="table table-striped">
+                    <tr>
+                        <th>Property Address</th>
+                        <th>Bed/Bath</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="border: none!important;">
+                                        <img src="https://photos.zillowstatic.com/p_b/ISbdc7j0528bh51000000000.jpg" alt="">
+                                    </td>
+                                    <td style="border: none!important;">
+                                        343656 E 770th Rd Agra, OK 74824
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            5 Bed, 3 Bath
+                        </td>
+                        <td>
+                            $128,000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td style="border: none!important;">
+                                        <img src="https://photos.zillowstatic.com/p_b/ISbdc7j0528bh51000000000.jpg" alt="">
+                                    </td>
+                                    <td style="border: none!important;">
+                                        343656 E 770th Rd Agra, OK 74824
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            5 Bed, 3 Bath
+                        </td>
+                        <td>
+                            $128,000
+                        </td>
+                    </tr>
+                </table>
+                <br><br> -->
+                <h4 class="heading-2">Post Sales</h4><br>
+                <table style="width: 100%" class="table table-striped" *ngIf="userProperty?.length > 1 || userProperty?.length == 1">
+                    <tr>
+                        <th>Property Address</th>
+                        <th>Bed/Bath</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr *ngFor="let property of userProperty | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
+                        <td>
+                            <table>
+                                <tr>
+                                    <td *ngIf="property.imagesProperty" style="border: none!important;padding: 0px;">
+                                        <img *ngIf="!property.imagesProperty[0]" src="assets/images/property-unavailable.png" width="100px" height="100px">
+                                        <img *ngIf="property.imagesProperty[0]" [src]="property.imagesProperty[0]" width="100px" height="100px" [ngClass]="{'non-display': property.imagesProperty == null}">
+                                    </td>
+                                    <td style="border: none!important;">
+                                        <span class="text-font">{{property.location}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <span class="text-font">{{property.beds}} Bed,{{property.bathroom}} Bath</span>
+                        </td>
+                        <td>
+                            <span class="text-font">${{property.price}}</span>
+                        </td>
+                    </tr>
+                </table>
+                <p *ngIf="userProperty?.length == 0" style="margin-bottom: -65px;">No Active Property Found!</p>
+                <pagination-controls *ngIf="userProperty?.length > 1 || userProperty?.length == 1" style="float:right;margin-right: -30px;" (pageChange)="p = $event"></pagination-controls><br><br>
+                <br><br><hr>
+                <div class="row mt-4">
+                    <div class="col-lg-12 mb-20">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="heading-2">Ratings & Reviews</h3>
+                            </div>
+                            <div class="col-md-6" *ngIf="showReviews == true && role">
+                                <button type="submit" class="btn btn-shadow btn-sm button-theme pull-right" (click)="agentRatings()">Write Review</button>
+                            </div>
+                        </div><br>
+                        <section *ngIf="showReviews == true">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <p>Show:</p>
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="form-control">
+                                        <option>All reviews</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="pull-right">Sort by:</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control">
+                                        <option>Newest First</option>
+                                    </select>
+                                </div>
+                            </div><br>
+                            <p *ngIf="reviews == ''">No Reviews Found!</p>
+                            <section *ngFor="let review of reviews" class="border-top-review">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <star-rating [value]="review.totalReviewStar" class="custom-recommended" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="true"></star-rating>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Mights Recommended</h5>
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                        <i class="fa fa-flag-o pull-right"></i>
+                                        <p>{{review.email}}</p>
+                                    </div> -->
+                                </div>
+                                <small class="review-date">{{review.yearOfService | date}} - 
+                                    <span *ngIf="review.serviceProvidedFor == 'findRentalHome'">Helped me find a home to rent</span>
+                                    <span *ngIf="review.serviceProvidedFor == 'neverRespond'">Never responded to my inquiry</span>
+                                    <span *ngIf="review.serviceProvidedFor == 'connectedButNotWork'">None. We connected, but it did not work out</span>
+                                    <span *ngIf="review.serviceProvidedFor == 'manageMyHome'">Property manage a home I own</span>
+                                    <span *ngIf="review.serviceProvidedFor == 'helpToFindTenantForMyHome'">Helped me find a tenant for a home I own</span>
+                                    <span *ngIf="review.serviceProvidedFor == 'otherServices'">Other real estate service</span>
+                                </small>
+                                <table style="width: 100%"><br>
+                                    <tr>
+                                        <td style="width: 25%;">Local knowledge:</td>
+                                        <td>
+                                            <star-rating [value]="review.localKnowledge" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="true"></star-rating>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%;">Process expertise:</td>
+                                        <td>
+                                            <star-rating [value]="review.processExpertise" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="true"></star-rating>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%;">Responsiveness:</td>
+                                        <td>
+                                            <star-rating [value]="review.responsiveness" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="true"></star-rating>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 25%;">Negotiation skills:</td>
+                                        <td>
+                                            <star-rating [value]="review.negotiationSkills" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="true"></star-rating>
+                                        </td>
+                                    </tr>
+                                </table><br>
+                                <p>
+                                    {{review.messageReview}}
+                                </p>
+                            </section>
+                        </section>
+                        <div class="row" *ngIf="giveReview == true">
+                            <div class="col-md-12">
+                                <form (ngSubmit)="postReviews(postForm)" #postForm="ngForm">
+                                    <div class="contact-2 pb-hediin-60">
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="width: 25%;">Local knowledge:</td>
+                                                <td>
+                                                    <star-rating value="5" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="false" (rate)="localKnowledge($event.newValue)"></star-rating>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 25%;">Process expertise:</td>
+                                                <td>
+                                                    <star-rating value="5" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="false" (rate)="processExpertise($event.newValue)"></star-rating>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 25%;">Responsiveness:</td>
+                                                <td>
+                                                    <star-rating value="5" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="false" (rate)="responsiveness($event.newValue)"></star-rating>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 25%;">Negotiation skills:</td>
+                                                <td>
+                                                    <star-rating value="5" checkedcolor="#faaa5d" value="0" uncheckedcolor="#cac2c5" size="24px" readonly="false" (rate)="negotiationSkills($event.newValue)"></star-rating>
+                                                </td>
+                                            </tr>
+                                        </table><br>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group messageReview">
+                                                    <textarea class="form-control" ngModel #messageReview="ngModel" name="messageReview" minlength="100" maxlength="1000" placeholder="Describe in detail your experience with" [ngClass]="{ 'is-invalid': postForm.submitted && messageReview.invalid}" required>
+                                                    </textarea>
+                                                    <span class="invalid-field" *ngIf="postForm.submitted && messageReview.invalid">Please Share your Experience with this Agent!</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group serviceProvidedFor">
+                                                    <select name="serviceProvidedFor" ngModel #serviceProvidedFor="ngModel" class="form-control" [ngClass]="{ 'is-invalid': postForm.submitted && serviceProvidedFor.invalid}" required>
+                                                        <option value="">Choose Service Provided</option>
+                                                        <option value="findRentalHome">Helped me find a home to rent</option>
+                                                        <option value="neverRespond">Never responded to my inquiry</option>
+                                                        <option value="connectedButNotWork">None. We connected, but it did not work out</option>
+                                                        <option value="manageMyHome">Property manage a home I own</option>
+                                                        <option value="helpToFindTenantForMyHome">Helped me find a tenant for a home I own</option>
+                                                        <option value="otherServices">Other real estate service</option>
+                                                    </select>
+                                                    <span class="invalid-field" *ngIf="postForm.submitted && serviceProvidedFor.invalid">Service is Required!</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group emyearOfServiceail">
+                                                    <input type="date" name="yearOfService" ngModel #yearOfService="ngModel" class="form-control" [ngClass]="{ 'is-invalid': postForm.submitted && yearOfService.invalid}" required>
+                                                    <span class="invalid-field" *ngIf="postForm.submitted && yearOfService.invalid">Year of Service is Required!</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group email">
+                                                    <input type="email" name="email" ngModel #email="ngModel" class="form-control" email placeholder="Email Address" [ngClass]="{ 'is-invalid': postForm.submitted && email.invalid}" required>
+                                                    <span class="invalid-field" *ngIf="postForm.submitted && email.invalid">Email is Required!</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="send-btn text-center">
+                                                    <button type="submit" class="btn btn-sm btn-shadow button-theme pull-right">Submit Review</button>
+                                                    <button class="btn btn-sm button-theme btn-custom pull-right" (click)="ignoreReview()">Cancel Review</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar-right">
+                    <!-- Contact 2 start -->
+                    <div class="contact-2 widget">
+                        <h3 class="sidebar-title">Contact Agent</h3>
+                        <div class="s-border"></div>
+                        <form (ngSubmit)="buyerLeads(leadsForm)" #leadsForm="ngForm">
+                            <div class="rowo">
+                                <div class="form-group name">
+                                    <input type="text" name="name" ngModel #name="ngModel" class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': leadsForm.submitted && name.invalid}" required>
+                                    <span class="invalid-field" *ngIf="leadsForm.submitted && name.invalid">Name is Required!</span>
+                                </div>
+                                <div class="form-group email">
+                                    <input type="email" name="email" ngModel #email="ngModel" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': leadsForm.submitted && email.invalid}" required>
+                                    <span class="invalid-field" *ngIf="leadsForm.submitted && email.invalid">Email Address is Required!</span>
+                                </div>
+                                <div class="form-group number">
+                                    <input type="text" name="phoneNumber" ngModel #phoneNumber="ngModel" class="form-control" placeholder="Phone" [ngClass]="{ 'is-invalid': leadsForm.submitted && phoneNumber.invalid}" required>
+                                    <span class="invalid-field" *ngIf="leadsForm.submitted && phoneNumber.invalid">Contact Number is Required!</span>
+                                </div>
+                                <div class="form-group message">
+                                    <textarea class="form-control" ngModel #description="ngModel" name="description" placeholder="Write message" [ngClass]="{ 'is-invalid': leadsForm.submitted && description.invalid}" required></textarea>
+                                    <span class="invalid-field" *ngIf="leadsForm.submitted && description.invalid">Message is Required!</span>
+                                </div>
+                                <div class="send-btn">
+                                    <button type="submit" class="btn btn-md btn-shadow button-theme btn-block">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="sidebar-right">
+                    <!-- Contact 2 start -->
+                    <div class="contact-2 widget">
+                        <h3 class="sidebar-title">Brokerage Information</h3>
+                        <div class="s-border"></div>
+                        <table class="text-font">
+                            <tr *ngIf="userBrokerage.address">
+                                <td style="width: 50%">
+                                    <span class="text-info">Broker address:</span>
+                                </td>
+                                <td style="width: 50%">
+                                    <span class="text-info">{{userBrokerage.address}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="userBrokerage.brokeragePhone">
+                                <td>
+                                    <span class="text-info">Cell phone:</span>
+                                </td>
+                                <td>
+                                    <span class="text-info">{{userBrokerage.brokeragePhone}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="userDetail?.firstName">
+                                <td>
+                                    <span class="text-info">Agent name:</span>
+                                </td>
+                                <td>
+                                    <span class="text-info">{{userDetail?.firstName}} {{userDetail?.lastName}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="userBrokerage.title">
+                                <td>
+                                    <span class="text-info">Brokerage name:</span>
+                                </td>
+                                <td>
+                                    <span class="text-info">{{userBrokerage.title}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="userBrokerage._id">
+                                <td>
+                                    <span class="text-info">Real Estate ID:</span>
+                                </td>
+                                <td>
+                                    <span class="text-info">{{userBrokerage._id}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="userBrokerage.created_at">
+                                <td>
+                                    <span class="text-info">Member since:</span>
+                                </td>
+                                <td>
+                                    <span class="text-info">{{userBrokerage.created_at | date}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="userDetail.serviceAreas">
+                                <td>
+                                    <span class="text-info">Services areas:</span>
+                                </td>
+                                <td>
+                                    <span class="text-info">{{userDetail.serviceAreas}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Agent page end -->

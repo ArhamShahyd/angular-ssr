@@ -1,0 +1,25 @@
+.invalid-field{
+    font-size: 11px;
+    color: #dc3545;
+}
+.is-invalid{
+    border: 1px solid #dc3545;
+}
+.opening-hours{
+    border: 1px solid #e7ecf1;
+}
+.custom-font{
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+.hours-text{
+    font-size: 13px;
+    margin-bottom: 9px;
+}
+.custom-hours span{
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+}
+
+/* Google Maps CSS */
+agm-map{
+    height: 300px;
+}

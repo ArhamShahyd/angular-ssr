@@ -1,0 +1,260 @@
+<div class="map-content content-area container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 mobile-map" style="padding-right: 0px;max-width: 48%;">
+            <!-- Google Maps Angular -->
+            <agm-map [zoom]="10" [latitude]="34.000368" [longitude]="-112.779863" [fitBounds]="searchBounds" (boundsChange)="placeMarker($event)" (idle)="idleHandler()" (centerChange)="centerChanged($event)" (mapReady)="mapIsReady()">
+                <agm-marker *ngFor="let property of searchResults" [latitude]="property.latitude" [longitude]="property.longitude" [agmFitBounds]="searchBounds">
+                        <agm-info-window>
+                            <!-- <strong>{{property.propertyTitle}}</strong> -->
+                            <a class="map-marker-inside" [routerLink]="['/property/details', property._id]" target="_blank">
+                                {{property.propertyTitle.slice(0,60)}} <span *ngIf="property.propertyTitle.length > 60">....</span>
+                            </a>
+                        </agm-info-window>
+                </agm-marker>
+            </agm-map>
+             <!-- Google Maps Angular -->
+        </div>
+        <div class="col-lg-6  col-sm-12 map-content-sidebar _mCS_1 mCS-autoHide"
+            style="overflow-y: scroll; height: 660px;max-width: 52%;">
+            <div id="mCSB_1" class="mCS-minimal-dark mCSB_vertical"
+                style="max-height: none;" tabindex="0">
+                <div style="position: relative; top: 12px; left: 0px;"
+                    dir="ltr">
+                    <div class="properties-map-search properties-pad">
+                        <div class="title-area">
+                            <h2 class="pull-left">Search</h2>
+                            <a class="show-more-options pull-right collapsed" data-toggle="collapse"
+                                data-target="#options-content" aria-expanded="false">
+                                <i class="fa fa-plus-circle"></i> Show More Filters
+                            </a>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <form (ngSubmit)="searchProperty(searchForm.value)" #searchForm="ngForm">
+                            <div class="properties-map-search-content">
+                                <div class="row">
+                                    <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <select class="form-control" ngModel #homeType="ngModel" name="homeType" (change)="searchProperty(searchForm.value)">
+                                                <option value="">Select Home Type</option>
+                                                <option value="houses">Houses</option>
+                                                <option value="condos">Condos/co-ops</option>
+                                                <option value="apartments">Apartments</option>
+                                                <option value="townhomes">Townhomes</option>
+                                            </select>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control search-fields" ngModel #propertyTitle="ngModel" name="propertyTitle" placeholder="Enter Property Title" (keyup.enter)="searchProperty(searchForm.value)">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control search-fields" ngModel #location="ngModel" name="location" placeholder="Enter Address e.g. Street, City" (keyup.enter)="searchProperty(searchForm.value)">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control search-fields" placeholder="Min Price Range" ngModel #minPrice="ngModel" name="minPrice" (keyup.enter)="searchProperty(searchForm.value)">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control search-fields" placeholder="Max Price Range" ngModel #maxPrice="ngModel" name="maxPrice" (keyup.enter)="searchProperty(searchForm.value)">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-xs btn-shadow button-theme btn-block">Search Here</button>
+                                        </div>
+                                    </div> -->
+                                    
+                                </div>
+                                <div id="options-content" class="collapse">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label class="margin-t-5 font-bold">Bathrooms</label>
+                                            <div class="btn-group">
+                                                <label *ngFor="let bath of bathroom; let first=first; let i=index" for="{{bath.id}}" class="btn btn-custom-radio" [ngClass]="{active: first}">
+                                                    <input id="{{bath.id}}" type="radio" class="radio-hidden" [(ngModel)]="bath.checked" name="bath" value="{{bath.value}}" [checked]="first" (change)="searchProperty(searchForm.value)">{{bath.value}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <label class="margin-t-5 font-bold">Bedrooms</label>
+                                            <div class="btn-group">
+                                                <label *ngFor="let bed of bedroom; let first=first; let i=index" for="{{bed.id}}" class="btn btn-custom-radio" [ngClass]="{active: first}">
+                                                    <input id="{{bed.id}}" type="radio" class="radio-hidden" [(ngModel)]="bed.checked" name="bed" value="{{bed.value}}" [checked]="first" (change)="searchProperty(searchForm.value)">{{bed.value}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="margin-t-5 font-bold">Years Built</label>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <input type="number" class="form-control search-fields" ngModel #yearBuildMin="ngModel" name="yearBuildMin" placeholder="Min Range" (keyup.enter)="searchProperty(searchForm.value)">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <input type="number" class="form-control search-fields" ngModel #yearBuildMax="ngModel" name="yearBuildMax" placeholder="Max Range" (keyup.enter)="searchProperty(searchForm.value)">
+                                        </div>
+                                    </div>
+                                    <!-- <label class="margin-t-5 font-bold">Search Property</label>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control search-fields" ngModel #propertyTitle="ngModel" name="propertyTitle" placeholder="Enter Property Title" (keyup.enter)="searchProperty(searchForm.value)">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <select class="form-control" ngModel #type="ngModel" name="type" (change)="searchProperty(searchForm.value)">
+                                                    <option value="sale" selected>For Sale</option>
+                                                    <option value="rent">For Rent</option>
+                                                    <option value="sold">Sold</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <label class="margin-t-5 font-bold">Square Feet</label>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control" ngModel #minArea="ngModel" name="minArea" (change)="searchProperty(searchForm.value)">
+                                                <option selected="" value="">Any</option>
+                                                <option value="500">500</option>
+                                                <option value="750">750</option>
+                                                <option value="1000">1,000</option>
+                                                <option value="1250">1,250</option>
+                                                <option value="1500">1,500</option>
+                                                <option value="1750">1,750</option>
+                                                <option value="2000">2,000</option>
+                                                <option value="2250">2,250</option>
+                                                <option value="2500">2,500</option>
+                                                <option value="2750">2,750</option>
+                                                <option value="3000">3,000</option>
+                                                <option value="3500">3,500</option>
+                                                <option value="4000">4,000</option>
+                                                <option value="5000">5,000</option>
+                                                <option value="7500">7,500</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <!-- <input type="number" class="form-control search-fields" placeholder="Max Range"> -->
+                                            <select class="form-control" ngModel #maxArea="ngModel" name="maxArea" (change)="searchProperty(searchForm.value)">
+                                                <option selected="" value="">Any</option>
+                                                <option value="500">500</option>
+                                                <option value="750">750</option>
+                                                <option value="1000">1,000</option>
+                                                <option value="1250">1,250</option>
+                                                <option value="1500">1,500</option>
+                                                <option value="1750">1,750</option>
+                                                <option value="2000">2,000</option>
+                                                <option value="2250">2,250</option>
+                                                <option value="2500">2,500</option>
+                                                <option value="2750">2,750</option>
+                                                <option value="3000">3,000</option>
+                                                <option value="3500">3,500</option>
+                                                <option value="4000">4,000</option>
+                                                <option value="5000">5,000</option>
+                                                <option value="7500">7,500</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- <label class="margin-t-10">Others</label>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" *ngFor="let option of features">
+                                            <div class="checkbox checkbox-theme checkbox-circle">
+                                                <input id="{{option.value}}" type="checkbox" [(ngModel)]="option.checked" name="option" value="{{option.value}}" (change)="searchProperty(searchForm.value)">
+                                                <label for="{{option.value}}">
+                                                    {{option.name}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="title-area hidden-sm hidden-xs">
+                            <h2 class="pull-left results-for text-font" *ngIf="searchFound == true">Result : {{searchResults?.length}} Property Found!</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="fetching-properties pad-0-15 hidden-sm hidden-xs">
+                            <div class="property-box-2" *ngFor="let property of searchResults | paginate: { itemsPerPage: 15, currentPage: p }; let i = index">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-5 col-pad">
+                                        <div class="property-thumbnail" style="height: 210px;">
+                                            <a href="#" class="property-img">
+                                                <div *ngIf="property.imagesProperty !== ''">
+                                                    <img src="{{property.imagesProperty[0]}}" class="img-fluid">
+                                                </div>
+                                                <div *ngIf="property.imagesProperty == ''">
+                                                    <img src="assets/images/property-unavailable.png" class="img-fluid">
+                                                </div>
+                                                    <span class="property-type" *ngIf="property.type == 'sell'"> For Sale</span>
+                                                    <span class="property-type" *ngIf="property.type == 'buy'"> Featured</span>
+                                                    <span class="property-type" *ngIf="property.type == 'rent'"> For Rent</span>
+                                                <!-- <div class="listing-badges">
+                                                    <span class="featured">Featured</span>
+                                                </div> -->
+                                                <div class="price-box">
+                                                    <span class="text-font">${{property.price}}</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-7 col-pad">
+                                        <div class="detail">
+                                            <div class="hdg">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <h3 class="title-property">
+                                                            <a [routerLink]="['/property/details', property._id]" target="_blank">
+                                                                {{property.propertyTitle.slice(0,60)}} <span *ngIf="property.propertyTitle.length > 60">....</span>
+                                                            </a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                                <h5 class="location">
+                                                    <a class="text-font">
+                                                        <i class="flaticon-location"></i>{{property.location}}
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <ul class="facilities-list clearfix">
+                                                <li>
+                                                    <span>Area</span>{{property.area}} Sqft
+                                                </li>
+                                                <li>
+                                                    <span>Beds</span> {{property.beds}}
+                                                </li>
+                                                <li>
+                                                    <span>Baths</span> {{property.bathroom}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <pagination-controls *ngIf="searchFound == true && searchResults?.length > 1 || searchResults?.length == 1" style="float:right" (pageChange)="p = $event"></pagination-controls><br><br><br>
+                            <span class="text-listhub-provided" *ngIf="searchFound == true && searchResults?.length > 1 || searchResults?.length == 1">Data Provided through ListHub.</span>
+                        </div>
+
+                        <div class="row" *ngIf="searchFound == false || searchResults?.length == 0">
+                            <div class="col-md-12 search-box-view">
+                                <p class="search-views-text">
+                                    <b>Swiftli is perfect for searching homes for sale. We are interactive and work in partnership with local Real Estate agents to help bring a smooth home buying and selling experience.</b>
+                                </p>
+                                <p class="search-views-text">
+                                    Swiftli is perfect for searching homes for sale in the United States. By analyzing real estate information on millions of homes for sale across the United States, 
+                                    we calculate home values (Zestimates) and the Swiftli Home Value Price Index.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

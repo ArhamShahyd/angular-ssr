@@ -1,0 +1,171 @@
+<div class="content-area5 dashboard-content">
+    <div class="submit-address dashboard-list">
+        <h4 class="bg-grea-3">My Profile</h4>
+        <div class="dashboard-message contact-2">
+            <form (ngSubmit)="contactForm(contact.value)" #contact="ngForm">
+                <div class="row text-center link-blocks">
+                    <div class="col col-blocks">
+                        <div class="counter">
+                            <i class="fa fa-user-o custom-font-icon"></i>
+                            <h2 class="count-title text-font">{{profileDetails.firstName}} {{profileDetails.lastName}} </h2>
+                            <p class="count-text ">Welcome to Dashboard</p>
+                        </div>
+                    </div>
+                    <div class="col col-blocks">
+                        <div class="counter">
+                            <i class="fa fa-line-chart custom-font-icon"></i>
+                            <h2 class="count-title text-font">{{profileDetails.brokerageName}}</h2>
+                            <p class="count-text ">Under Brokerage</p>
+                        </div>
+                    </div>
+                    <div class="col col-blocks">
+                        <div class="counter">
+                            <i class="fa fa-comment-o custom-font-icon"></i>
+                            <h2 class="count-title text-font">{{profileDetails.userRating}}</h2>
+                            <p class="count-text ">Happy Ratings</p>
+                        </div>
+                    </div>
+                    <div class="col col-blocks">
+                        <div class="counter">
+                            <i class="fa fa-exchange custom-font-icon"></i>
+                            <h2 class="count-title text-font">{{profileDetails.userPoints}}</h2>
+                            <p class="count-text ">User Point System</p>
+                        </div>
+                    </div>
+                </div><br>
+                <hr><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="email">Email Address</label>
+                                <div class="form-group">
+                                    <input type="email" class="form-control readonly-number" [(ngModel)]="profileDetails.email"#email="ngModel" name="email" placeholder="Email Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="primaryPhone">Phone Number</label>
+                                <div class="form-group">
+                                    <input type="number" class="form-control input-number"
+                                        [(ngModel)]="profileDetails.primaryPhone" #primaryPhone="ngModel"
+                                        name="primaryPhone" placeholder="Contact Number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="serviceAreas">Services Area</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="profileDetails.serviceAreas"
+                                        #serviceAreas="ngModel" name="serviceAreas" placeholder="Contact Number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="timeZone">Time Zone</label>
+                                <div class="form-group">
+                                    <select class="form-control" ngModel name="timeZone" #timeZone="ngModel">
+                                        <option value="">Select TimeZone</option>
+                                        <option value="hawaii_time">Hawaii Time</option>
+                                        <option value="alaska_time">Alaska Time</option>
+                                        <option value="pacific_time">Pacific Time</option>
+                                        <option value="mountain_time">Mountain Time</option>
+                                        <option value="pacific_time">Central Time</option>
+                                        <option value="eastern_time">Eastern Time</option>
+                                        <option value="atlantic_time">Atlantic Time</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="message">About Agent</label>
+                                <div class="form-group">
+                                    <textarea class="form-control" [(ngModel)]="profileDetails.message"
+                                        #message="ngModel" name="message" placeholder="Message Here"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="facebook">Facebook</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="profileDetails.facebook"
+                                        #facebook="ngModel" name="facebook" placeholder="Facebook">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="twitter">Twitter</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="profileDetails.twitter"
+                                        #twitter="ngModel" name="twitter" placeholder="Twitter">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="instagram">Instagram</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="profileDetails.instagram"
+                                        #instagram="ngModel" name="instagram" placeholder="Instagram">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="linkedIn">LinkedIn</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" [(ngModel)]="profileDetails.linkedIn"
+                                        #linkedIn="ngModel" name="linkedIn" placeholder="LinkedIn">
+                                </div>
+                            </div>
+                            <h3 class="headline-brokerage">About Brokerage</h3><br><br>
+                            <div class="col-md-6">
+                                <label for="brokerageName">Brokerage Name</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control readonly"
+                                        [(ngModel)]="profileDetails.brokerageName" #brokerageName="ngModel"
+                                        name="brokerageName" placeholder="Brokerage Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="_id">Brokerage ID</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control readonly-number"
+                                        [(ngModel)]="brokerDetails._id" #_id="ngModel" name="_id">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="brokeragePhone">Brokerage Phone</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control readonly-number"
+                                        [(ngModel)]="profileDetails.brokeragePhone" #brokeragePhone="ngModel"
+                                        name="brokeragePhone" placeholder="Brokerage Phone">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="brokerageAddress">Brokerage Address</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control readonly"
+                                        [(ngModel)]="profileDetails.brokerageAddress" #brokerageAddress="ngModel"
+                                        name="brokerageAddress" placeholder="Brokerage Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cityStateZip">Brokerage city/State/Zip</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control readonly"
+                                        [(ngModel)]="profileDetails.cityStateZip" #cityStateZip="ngModel"
+                                        name="cityStateZip" placeholder="Brokerage city/State/Zip">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inBusiness">In Business</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control readonly-number"
+                                        [(ngModel)]="profileDetails.inBusiness" #inBusiness="ngModel" name="inBusiness"
+                                        placeholder="In Business">
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <div class="send-btn text-center">
+                                    <button type="submit" class="btn btn-sm btn-shadow button-theme pull-right">Update
+                                        Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

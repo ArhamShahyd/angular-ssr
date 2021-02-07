@@ -1,0 +1,92 @@
+.text-finder-des{
+    border-top: 1px solid #dcd5d5;
+    padding-top: 20px;
+}
+.image-profile{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid #D1D1D5;
+}
+.fa-star{
+    margin-right: 3px;
+}
+.fa-angle-right{
+    color: #37A000!important;
+    cursor: pointer;
+}
+
+.search-box{
+    margin-bottom: 30px;
+    margin-top: 15px;
+    padding: 18px 15px 10px;
+    background: #fff;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.1);
+}
+.s-border{
+    margin-bottom: 10px;
+}
+.text-profile-title{
+    cursor: pointer;
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1)
+}
+.agent-not-found{
+    font-size: 25px;
+    text-align: center;
+    font-family: "Gotham SSm",Helvetica,Arial,sans-serif;
+
+    text-transform: uppercase;
+    box-shadow: 0 1px 6px rgba(57,73,76,0.35);
+    padding: 10px;
+    color: #a00000;
+    /* color: white; */
+}
+.text-reviews{
+    color: #4d4d4d !important;
+    text-align: center;
+}
+.text-review-available{
+    color: #4d4d4d !important;
+    text-align: center;
+    padding: 0px;
+    margin-top: 25px;
+}
+
+/* Media Query CSS */
+
+@media only screen and (max-width: 450px) {
+    .img-agent-search {
+        width: 100%;
+    }
+    .content-area {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    .agent-search-form{
+        margin-bottom: 10px;
+    }
+    .view-agents-block{
+        display: block;
+    }
+    .image-profile{
+        float: left;
+        margin-right: 13px;
+    }
+    .text-review-available{
+        padding-top: 15px;
+    }
+    .text-reviews{
+        padding-top: 30px;
+    }
+    .text-profile-title{
+        padding-top: 10px;
+    }
+    .icon-right-profile{
+        display: none;
+    }
+}

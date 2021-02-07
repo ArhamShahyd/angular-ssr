@@ -1,0 +1,98 @@
+<div class="comparison content-area focusout-background">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="header-sidebar">
+                    <input type="text" placeholder="Search Messages" class="form-control search-messages">
+                </div>
+                <div class="sidebar-wid">
+                    <div class="contact-list" *ngFor="let chat of getAllMessages">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/65637780/original/photo.jpg"
+                                    alt="" class="img-sidebar">
+                            </div>
+                            <div class="col-md-9" (click)="getSpecificChat(chat)">
+                                <p class="candidate-name">Candidate 1 <span class="text-hour">{{chat.created_at | date}}</span></p>
+                                <span class="message-view-sidebar">Me: {{chat.message | slice:0:22}}..</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="contact-list-white">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/65637780/original/photo.jpg"
+                                    alt="" class="img-sidebar">
+                            </div>
+                            <div class="col-md-9">
+                                <p class="candidate-name">Candidate 2 <span class="text-hour">15 hour</span></p>
+                                <span class="message-view-sidebar">Me: Sure, Take your time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-list-white">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/65637780/original/photo.jpg"
+                                    alt="" class="img-sidebar">
+                            </div>
+                            <div class="col-md-9">
+                                <p class="candidate-name">Candidate 3 <span class="text-hour">15 hour</span></p>
+                                <span class="message-view-sidebar">Me: Sure, Take your time</span>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row text-profile-name">
+                    <div class="col-md-12">
+                        <p class="text-top-profileName">Candidate 1</p>
+                    </div>
+                </div>
+                <div class="row message-display-body">
+                    <div class="col-md-12">
+                        <div class="row mb-4" *ngFor="let chat of getSpecificMessages">
+                            <div class="col-md-1">
+                                <img src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/65637780/original/photo.jpg"
+                                    alt="" class="img-message">
+                            </div>
+                            <div class="col-md-11" style="margin-left: -15px;">
+                                <p class="candidate-receive-name">Candidate 1 <span class="text-hour">8 Nov, 9:36
+                                        pm</span></p>
+                                <span class="message-view-text">
+                                    {{chat.message}}
+                                </span>
+                            </div>
+                        </div>
+                        <!-- <div class="row mb-4">
+                            <div class="col-md-1">
+                                <img src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/c4e2d8511ff10634ec31b58d248b517e-1551166628217/e8b07dbe-58cf-4671-8975-82fe17b79bbd.png"
+                                    alt="" class="img-message">
+                            </div>
+                            <div class="col-md-11" style="margin-left: -15px;">
+                                <p class="candidate-receive-name">Candidate 2 <span class="text-hour">8 Nov, 9:36
+                                        pm</span></p>
+                                <span class="message-view-text">The additional features will cost other than this
+                                    budget</span>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <form (ngSubmit)="sendMessage(f.value)" #f="ngForm">
+                    <div class="row message-row">
+                        <div class="col-md-9">
+                            <input type="text" class="form-control message-send-custom" placeholder="Write a message or attach file..." ngModel #message="ngModel" name="message">
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fa fa-paperclip font-icon-custom"></i>
+                            <button type="submit" class="btn btn-primary message-btn">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

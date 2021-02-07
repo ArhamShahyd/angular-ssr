@@ -1,0 +1,192 @@
+<div class="dashboard submit-property" style="top: 85px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-pad">
+                <div class="content-area5 dashboard-content">
+                    <div class="dashboard-header clearfix">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <h4>Welcome to Real Estate Agents</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-address dashboard-list">
+                        <h4 class="bg-grea-3">Create Account</h4>
+                        <div class="dashboard-message contact-2">
+                            <form (ngSubmit)="userCreateForm(firstForm)" #firstForm="ngForm">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            <input type="text" class="form-control" ngModel #firstName="ngModel" name="firstName" [ngClass]="{ 'is-invalid': firstForm.submitted && firstName.invalid}" required>
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && firstName.invalid">First Name is Requied</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control" ngModel #lastName="ngModel" name="lastName" [ngClass]="{ 'is-invalid': firstForm.submitted && lastName.invalid}" required>
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && lastName.invalid">Last Name is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Professional title</label>
+                                            <input type="text" class="form-control" ngModel #professionalTitle="ngModel" name="professionalTitle" [ngClass]="{ 'is-invalid': firstForm.submitted && professionalTitle.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && professionalTitle.invalid">Professional Title is Requied</p>
+                                        </div>
+                                        <!-- <div class="form-group" *ngIf="userRole == true">
+                                            <label>Profession category</label>
+                                            <select class="form-control" ngModel name="professionCategory" #professionCategory="ngModel" [ngClass]="{ 'is-invalid': firstForm.submitted && professionCategory.invalid}" [required]="userRole == true">
+                                                <option value="">Select Category</option>
+                                                <option value="agent">Real Estate Agent</option>
+                                                <option value="brokerage">Real Estate Brokerage</option>
+                                            </select>
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && professionCategory.invalid">Profession Category is Requied</p>
+                                        </div> -->
+                                        <div class="form-group" *ngIf="userRole == false">
+                                            <label>User Type</label>
+                                            <select class="form-control" ngModel #userType="ngModel" name="userType" [ngClass]="{ 'is-invalid': firstForm.submitted && userType.invalid}" [required]="userRole == false">
+                                                <option value="">Select User Type</option>
+                                                <option value="seller">Seller</option>
+                                                <option value="buyer">Buyer</option>
+                                                <option value="rent">Rental</option>
+                                            </select>
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && userType.invalid">Please Select User Type</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Brokerage name</label>
+                                            <input type="text" class="form-control" ngModel #brokerageName="ngModel" name="brokerageName" [ngClass]="{ 'is-invalid': firstForm.submitted && brokerageName.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && brokerageName.invalid">Brokerage Name is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Brokerage address</label>
+                                            <input type="text" class="form-control" ngModel #brokerageAddress="ngModel" name="brokerageAddress" [ngClass]="{ 'is-invalid': firstForm.submitted && brokerageAddress.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && brokerageAddress.invalid">Brokerage Address is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Time zone</label>
+                                            <select class="form-control" ngModel name="timeZone" #timeZone="ngModel" [ngClass]="{ 'is-invalid': firstForm.submitted && timeZone.invalid}" [required]="userRole == true">
+                                                <option value="">Select TimeZone</option>
+                                                <option value="hawaii_time">Hawaii Time</option>
+                                                <option value="alaska_time">Alaska Time</option>
+                                                <option value="pacific_time">Pacific Time</option>
+                                                <option value="mountain_time">Mountain Time</option>
+                                                <option value="pacific_time">Central Time</option>
+                                                <option value="eastern_time">Eastern Time</option>
+                                                <option value="atlantic_time">Atlantic Time</option>
+                                            </select>
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && timeZone.invalid">Time Zone is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>City, state, ZIP</label>
+                                            <input type="text" class="form-control" ngModel #cityStateZip="ngModel" name="cityStateZip" [ngClass]="{ 'is-invalid': firstForm.submitted && cityStateZip.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && cityStateZip.invalid">city State Zip is Requied</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Primary Phone</label>
+                                            <input type="number" class="form-control input-number" ngModel #primaryPhone="ngModel" (keydown)="matchNumbers($event)" name="primaryPhone" [ngClass]="{ 'is-invalid': firstForm.submitted && primaryPhone.invalid}" [required]="userRole == false">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && primaryPhone.invalid">Primary Phone is Required</p>
+                                        </div>
+                                        <!-- <div class="form-group" *ngIf="userRole == true">
+                                            <label>Primary phone</label>
+                                            <input type="text" class="form-control" ngModel #primaryPhone="ngModel" name="primaryPhone" [ngClass]="{ 'is-invalid': firstForm.submitted && primaryPhone.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && primaryPhone.invalid">Primary Phone is Requied</p>
+                                        </div> -->
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Brokerage phone</label>
+                                            <input type="number" class="form-control input-number" ngModel #brokeragePhone="ngModel" (keydown)="matchNumbers($event)" name="brokeragePhone" [ngClass]="{ 'is-invalid': firstForm.submitted && brokeragePhone.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && brokeragePhone.invalid">Brokerage Phone is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == false">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" ngModel #address="ngModel" name="address" [ngClass]="{ 'is-invalid': firstForm.submitted && address.invalid}" [required]="userRole == false">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && address.invalid">Address is Required</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == false">
+                                            <label>Display Name</label>
+                                            <input type="text" class="form-control" ngModel #screenName="ngModel" name="screenName" [ngClass]="{ 'is-invalid': firstForm.submitted && screenName.invalid}" [required]="userRole == false">
+                                                <p class="invalid-feedback" *ngIf="firstForm.submitted && screenName.invalid">Display Name is Required</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Service Areas</label>
+                                            <input type="text" class="form-control" ngModel #serviceAreas="ngModel" name="serviceAreas" [ngClass]="{ 'is-invalid': firstForm.submitted && serviceAreas.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && serviceAreas.invalid">Service Areas is Requied</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Message</label>
+                                            <textarea class="form-control" cols="30" rows="10" ngModel #message="ngModel" name="message" [ngClass]="{ 'is-invalid': firstForm.submitted && message.invalid}" required></textarea>
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && message.invalid">Message is Required</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>In business since</label>
+                                            <input type="number" class="form-control" ngModel name="inBusiness" #inBusiness="ngModel" placeholder="Enter Year - 2020" [ngClass]="{ 'is-invalid': firstForm.submitted && inBusiness.invalid}" [required]="userRole == true">
+                                             <!-- <select class="form-control">
+                                                <option>Select Year</option>
+                                                <option>2020</option>
+                                                <option>2019</option>
+                                                <option>2018</option>
+                                                <option>2017</option>
+                                            </select> -->
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && inBusiness.invalid">In Business is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Facebook</label>
+                                            <input type="text" class="form-control" placeholder="www.facebook.com/username" ngModel #facebook="ngModel" name="facebook" [ngClass]="{ 'is-invalid': firstForm.submitted && facebook.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && facebook.invalid">Facebook is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Twitter</label>
+                                            <input type="text" class="form-control" placeholder="www.twitter.com/username" ngModel #twitter="ngModel" name="twitter" [ngClass]="{ 'is-invalid': firstForm.submitted && twitter.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && twitter.invalid">Twitter is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>Instagram</label>
+                                            <input type="text" class="form-control" placeholder="www.instagram.com/username" ngModel #instagram="ngModel" name="instagram" [ngClass]="{ 'is-invalid': firstForm.submitted && instagram.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && instagram.invalid">Instagram is Requied</p>
+                                        </div>
+                                        <div class="form-group" *ngIf="userRole == true">
+                                            <label>LinkedIn</label>
+                                            <input type="text" class="form-control" placeholder="www.linkedin.com/username" ngModel #linkedIn="ngModel" name="linkedIn" [ngClass]="{ 'is-invalid': firstForm.submitted && linkedIn.invalid}" [required]="userRole == true">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && linkedIn.invalid">LinkedIn is Requied</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox checkbox-theme checkbox-circle">
+                                                <input id="checkbox1" type="checkbox" ngModel #allow_user_to_message="ngModel" name="allow_user_to_message" [ngClass]="{ 'is-invalid': firstForm.submitted && allow_user_to_message.invalid}">
+                                                <label for="checkbox1">
+                                                    Allow User to Message you directly?
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox checkbox-theme checkbox-circle">
+                                                <input id="checkbox2" type="checkbox" ngModel #allow_user_to_contact_you="ngModel" name="allow_user_to_contact_you" [ngClass]="{ 'is-invalid': firstForm.submitted && allow_user_to_contact_you.invalid}">
+                                                <label for="checkbox2">
+                                                    Allow User to Contact you directly?
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Attach Profile Image</label>
+                                            <input type="file" class="form-control" ngModel #profileImage="ngModel" name="profileImage" [ngClass]="{ 'is-invalid': firstForm.submitted && profileImage.invalid}">
+                                            <p class="invalid-feedback" *ngIf="firstForm.submitted && profileImage.invalid">Profile Image is Requied</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox checkbox-theme checkbox-circle">
+                                                <input id="checkbox3" type="checkbox" ngModel #aggrement="ngModel" name="aggrement" [ngClass]="{ 'is-invalid': firstForm.submitted && aggrement.invalid}" required>
+                                                <label for="checkbox3">
+                                                    Are you agree with our terms and conditions?
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="send-btn">
+                                            <button type="submit" class="btn btn-md btn-shadow button-theme pull-right" [disabled]="firstForm.form.value.aggrement == false">SignUp</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div><br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

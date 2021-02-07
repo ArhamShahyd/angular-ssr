@@ -1,0 +1,24 @@
+.invalid-field{
+    font-size: 11px;
+    color: #dc3545;
+}
+.is-invalid{
+    border: 1px solid #dc3545;
+}
+.text-banner{
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+}
+.text-banner-p{
+    text-align: center;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.btn-contact{
+    background-color: #37A000;
+    border: 1px solid #37A000;
+    text-align: center;
+}

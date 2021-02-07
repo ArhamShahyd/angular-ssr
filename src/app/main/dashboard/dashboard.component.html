@@ -1,0 +1,20 @@
+<div class="dashboard submit-property" style="top: 85px;">
+    <div class="container-fluid block-side-padding">
+        <div class="row">
+            <div class="col-md-3"><br><br>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link" routerLink="/dashboard/profile" routerLinkActive="active">My Profile</a>
+                    <a class="nav-link" routerLink="/dashboard/manage-property" routerLinkActive="active">Manage Properties</a>
+                    <a class="nav-link" routerLink="/dashboard/lead-request" routerLinkActive="active">Leads Request</a>
+                    <a class="nav-link" routerLink="/dashboard/active-leads" routerLinkActive="active">Active Leads</a>
+                    <a class="nav-link" routerLink="/dashboard/expired-leads" routerLinkActive="active">Expired Leads</a>
+                    <a class="nav-link" routerLink="/dashboard/review" routerLinkActive="active">Reviews & Ratings</a>
+                    <!-- <a class="nav-link" routerLink="/dashboard/membership" routerLinkActive="active">Upgrade Membership</a> -->
+                </div>
+            </div>
+            <div class="col-md-9"><br>
+                <router-outlet></router-outlet>
+            </div>
+        </div><br><br><br><br><br><br><br>
+    </div>
+</div>

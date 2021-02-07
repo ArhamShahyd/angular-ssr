@@ -1,0 +1,39 @@
+<div class="content-area5 dashboard-content">
+    <div class="submit-address dashboard-list">
+        <h4 class="bg-grea-3">Active Leads</h4>
+        <div class="dashboard-message contact-2">
+            <table class="table table-striped" *ngIf="activeLeads?.length > 1 || activeLeads?.length == 1">
+                <thead>
+                    <tr>
+                    <th scope="col">Counts</th>
+                    <th scope="col">Contact User</th>
+                    <th scope="col">Starting</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lead of activeLeads | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
+                        <td scope="row">{{lead.counter}}</td>
+                        <td>
+                            {{lead.contactUserId.name.slice(0,20)}}
+                            <span *ngIf="lead.contactUserId.name?.length > 20">...</span>
+                        </td>
+                        <td>
+                            {{lead.created_at | date}}
+                        </td>
+                        <td>
+                            {{lead.expireTime | date}}
+                        </td>
+                        <td>
+                            {{lead.contactUserId.description.slice(0,20)}}
+                            <span *ngIf="lead.contactUserId.description?.length > 20">...</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p *ngIf="activeLeads?.length == 0">No Active Leads Found!</p>
+            <pagination-controls *ngIf="activeLeads?.length > 1 || activeLeads?.length == 1" style="float:right" (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
